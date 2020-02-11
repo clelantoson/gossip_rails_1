@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'gossip/display'
   get 'user/welcome'
   root "static#index"
 
@@ -12,4 +13,8 @@ Rails.application.routes.draw do
   get 'welcome/:first_name', to: 'user#welcome'
 
   post '/', to: 'user#welcome_post' 
+
+  get 'gossip/:id', to: 'gossip#display', as: 'gossip'
+
+  get 'user/:id', to: 'user#display_user', as: 'user'
 end

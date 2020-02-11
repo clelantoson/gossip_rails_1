@@ -1,0 +1,15 @@
+<html>
+  <div class="card border-warning mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h1>Gossip n°<%=@id%></h1></div>
+    <div class="card-body text-warning">
+      <h5 class="card-title">Title : <%=@gossip.title%></h5>
+      <p class="card-text">Content : <%=@gossip.content%> <br>
+      by Author : <%=@gossip.user.first_name%><br>
+    on <%=@gossip.created_at%></p>
+    <%= link_to "Watch the Author profile", user_path %> </p>
+    </div>
+  </div>
+
+</html>
+
+

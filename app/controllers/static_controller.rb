@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
   def index
-
+    @all_gossips = Gossip.all
   end
 
   def team
