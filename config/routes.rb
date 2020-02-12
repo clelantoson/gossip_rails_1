@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   post '/', to: 'static#welcome_post' 
 
-  resources :gossips, only: [:new, :create, :show, :index]
+  resources :gossips
   resources :users, only: [:new, :create, :show, :index]
-
+  resources :cities, only: [:new, :create, :show, :index]
 end
+  

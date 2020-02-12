@@ -1,0 +1,13 @@
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+  <%= label_tag 'Title' %>
+  <%= text_field_tag 'title',"#{@gossip.title}" %>
+  <br /> <br />
+
+  <%= label_tag 'Content' %>
+  <%= text_area_tag 'content',"#{@gossip.content}" %>
+  <br /> <br />
+
+  <%= submit_tag 'Update Post' %>
+
+<% end %>

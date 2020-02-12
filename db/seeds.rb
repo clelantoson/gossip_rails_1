@@ -22,7 +22,7 @@ end
 
 ds = 0
 10.times do
-  User.create(city:City.all.sample,first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, description:Faker::Lorem.sentences , email:Faker::Internet.email, age:Faker::Number.number(digits: 2))
+  User.create(city:City.all.sample,first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, description:Faker::Lorem.paragraph(sentence_count: 2) , email:Faker::Internet.email, age:Faker::Number.number(digits: 2))
   ds += 1
   puts "User #{ds} created !"
 end
@@ -30,7 +30,7 @@ end
 g = 0
 
 20.times do
-  Gossip.create(user:User.all.sample,title:Faker::Book.title, content:Faker::Lorem.sentences)
+  Gossip.create(user:User.all.sample,title:Faker::Book.title, content:Faker::Lorem.paragraph(sentence_count: 2))
   g += 1
   puts "Gossip #{g} created !"
 end
@@ -58,7 +58,7 @@ end
 m = 0
 
 20.times do
-  PrivateMessage.create(recipient:User.all.sample,sender:User.all.sample,content:Faker::Lorem.sentences)
+  PrivateMessage.create(recipient:User.all.sample,sender:User.all.sample,content:Faker::Lorem.paragraph(sentence_count: 2))
   m += 1
   puts "Message #{m} successfully sent !"
 end

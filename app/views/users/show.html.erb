@@ -4,9 +4,10 @@
     <div class="card-header"><h1>User n°<%=@id%></h1></div>
     <div class="card-body text-info">
       <h5 class="card-title">First name : <%=@user.first_name%></h5>
-      <p class="card-text">Last Name: <%=@user.last_name%> <br>
-     <%=@user.email%><br>
-     Age : <%=@user.age%>
+      <p class="card-text">Last Name : <%=@user.last_name%> <br>
+     Bio : <%=@user.description%><br> 
+     Age : <%=@user.age%> <br>
+     City: <%=@user.city.name%> <br>
     </p>
   
     </div>

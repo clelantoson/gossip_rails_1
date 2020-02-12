@@ -1,5 +1,7 @@
 <h1>Welcome to the Gossip Project</h1>
-
+<% unless params[:success].nil? %>
+<div class="alert alert-success" role="alert"><%=params[:success]%></div>
+<% end %>
 
 <button class="btn btn-primary" type="submit"><%= link_to "Create new gossip", new_gossip_path %></button>
 
@@ -7,7 +9,7 @@
   <p>
 
     <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-      <div class="card-header">Gossip n°<%=index+1%></div>
+      <div class="card-header">Gossip n°<%=index%></div>
       <div class="card-body">
         <h5 class="card-title"> <%= gossip.title %></a></h5>
         <p class="card-text"> by <%= gossip.user.first_name %><br/>
