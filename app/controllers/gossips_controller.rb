@@ -7,6 +7,7 @@ class GossipsController < ApplicationController
   def show
     @id = params[:id]
     @gossip = Gossip.find(@id)
+
   end
 
   def new
@@ -15,10 +16,6 @@ class GossipsController < ApplicationController
   end
 
   def create
-    # ou alors écrire gossip = params['gossip']
-    # gossip['title']
-    puts params
-  
     @gossip = Gossip.new(title: params['title'],content: params['content'],user: User.find_by(first_name: "Anonymous"))
 
     if @gossip.save
@@ -33,10 +30,10 @@ class GossipsController < ApplicationController
   end 
 
   def edit
-    @gossip = Gossip.find(params[:id])
+    @gossip = Gossip.find(params[:id]) #pour afficher la page edit, j'ai besoin du gossip a modifier @gossip, c'est lié au edit.html.erb
   end
 
-  def update
+  def update #apres avoir cliqué sur submit le formulaire va envoyer une requete post à la route update (gossips#update) qui va prendre en params les nouveaux champs a modifier, la methode va l'enregister dans la db 
     @gossip = Gossip.find(params[:id])
     if @gossip.update(title: params['title'],content: params['content'],user: User.find_by(first_name: "Anonymous"))
       redirect_to @gossip
@@ -48,6 +45,9 @@ class GossipsController < ApplicationController
  
 
   def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
 
+    redirect_to @gossip
   end
 end

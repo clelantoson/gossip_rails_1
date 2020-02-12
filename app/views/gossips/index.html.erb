@@ -9,9 +9,8 @@
   <p>
 
     <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-      <div class="card-header">Gossip n°<%=index%></div>
+      <div class="card-header"><%=gossip.title%></div>
       <div class="card-body">
-        <h5 class="card-title"> <%= gossip.title %></a></h5>
         <p class="card-text"> by <%= gossip.user.first_name %><br/>
      
           <%= link_to "Watch the gossip", gossip_path(gossip) %> </p>

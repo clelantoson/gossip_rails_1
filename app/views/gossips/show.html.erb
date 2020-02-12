@@ -10,8 +10,37 @@
     on <%=@gossip.created_at%></p>
     <%= link_to "Watch the Author profile", user_path %> </p>
     <%= link_to "Edit the gossip", edit_gossip_path %> </p>
+    <%= link_to "Delete the gossip", gossip_path, 
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %> </p>
+  
     </div>
   </div>
+
+  <%= form_tag(comments_path, :method => "post") do %>
+  <%= hidden_field_tag(:gossip_id, @gossip.id) %>
+    <%= label_tag 'Author' %>
+    <%= text_field_tag 'user_id' %>
+    <br /> <br />
+    <%= label_tag 'Content' %>
+    <%= text_area_tag 'content' %>
+    <br/> <br/>
+    <%= submit_tag "Submit" %>
+  <% end %>
+
+  <% @gossip.comments.each_with_index do |comment, index| %>
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header"> <%= comment.user.first_name %> </div>
+      <div class="card-body">
+        <p class="card-text"> <%= comment.content %><br/>
+      </p>
+      </div>
+    </div>
+    <% end %>
+  
+    <%if @gossip.comments.empty?%>
+    <p>Il n'y a pas de commentaires.</p>
+    <% end %>
 
 </html>
 
