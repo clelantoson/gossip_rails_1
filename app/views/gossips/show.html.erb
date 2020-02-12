@@ -5,6 +5,7 @@
       <h5 class="card-title">Title : <%=@gossip.title%></h5>
       <p class="card-text">Content : <%=@gossip.content%> <br>
       by Author : <%=@gossip.user.first_name%><br>
+      from : <%=@gossip.user.city.name%><br>
     on <%=@gossip.created_at%></p>
     <%= link_to "Watch the Author profile", user_path %> </p>
     </div>

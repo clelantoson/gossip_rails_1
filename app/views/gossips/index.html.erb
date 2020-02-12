@@ -1,0 +1,46 @@
+<h1>Welcome to the Gossip Project</h1>
+
+
+<button class="btn btn-primary" type="submit"><%= link_to "Create new gossip", new_gossip_path %></button>
+
+<% @all_gossips.each_with_index do |gossip, index| %>
+  <p>
+
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header">Gossip n°<%=index+1%></div>
+      <div class="card-body">
+        <h5 class="card-title"> <%= gossip.title %></a></h5>
+        <p class="card-text"> by <%= gossip.user.first_name %><br/>
+     
+          <%= link_to "Watch the gossip", gossip_path(gossip) %> </p>
+      </div>
+    </div>
+      
+  </p>
+  <% end %>
+
+  <form method='POST'>
+    <div class="form row justify content center">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="col-4">
+        <input type="text" class="form-control" name="first_name" placeholder="First name">
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" placeholder="Last name">
+      </div>
+    </div>
+    <div class="form row justify content center">
+      <div class="col-4">
+        <input type="text" class="form-control" placeholder="city">
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" placeholder="age">
+      </div>
+    </div>
+    <div class="form row justify content center">
+      <div class="col-8">
+        <input type="textarea" class="form-control" placeholder="description">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Validate</button>
+  </form>

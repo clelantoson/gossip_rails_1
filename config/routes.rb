@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
-  get 'gossip/display'
-  get 'user/welcome'
-  root "static#index"
+
+  root 'gossips#index'
 
   get 'static/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   get 'team', to: 'static#team'
-
   get 'contact', to: 'static#contact'
+  get 'welcome/:first_name', to: 'static#welcome'
 
-  get 'welcome/:first_name', to: 'user#welcome'
+  post '/', to: 'static#welcome_post' 
 
-  post '/', to: 'user#welcome_post' 
+  resources :gossips, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create, :show, :index]
 
-  get 'gossip/:id', to: 'gossip#display', as: 'gossip'
-
-  get 'user/:id', to: 'user#display_user', as: 'user'
 end
