@@ -1,9 +1,15 @@
 <h1>Welcome to the Gossip Project</h1>
+
 <% unless params[:success].nil? %>
 <div class="alert alert-success" role="alert"><%=params[:success]%></div>
 <% end %>
 
-<button class="btn btn-primary" type="submit"><%= link_to "Create new gossip", new_gossip_path %></button>
+
+<% unless params[:add_user].nil? %>
+<div class="alert alert-success" role="alert"><%=params[:add_user]%></div>
+<% end %>
+
+<button class="btn btn-outline-primary" type="submit"><%= link_to "Create new gossip", new_gossip_path %></button>
 
 <% @all_gossips.each_with_index do |gossip, index| %>
   <p>

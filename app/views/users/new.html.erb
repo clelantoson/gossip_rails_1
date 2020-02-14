@@ -1,0 +1,61 @@
+<div>
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+  <%= label_tag 'Name' %>
+  <%= text_field_tag 'first_name'%>
+
+  <br /> <br />
+
+  <%= label_tag 'Last Name' %>
+  <%= text_area_tag 'last_name' %>
+
+  <br/> <br/>
+
+  <%= label_tag 'Age' %>
+
+  <%= text_field_tag 'age' %>
+  <br /> <br />
+
+  <%= label_tag 'City' %>
+
+  <%= text_field_tag 'city' %>
+
+  <br /> <br />
+
+  <%= label_tag 'Description' %>
+
+  <%= text_field_tag 'description' %>
+
+  <br /> <br />
+
+  <%= label_tag 'Email' %>
+
+  <%= text_field_tag 'email' %>
+
+  <br /> <br />
+
+  <%= label_tag 'Password' %>
+
+  <%= password_field_tag 'password_digest' %>
+  <br /> <br />
+
+  <%= label_tag 'Password_confirmation' %>
+
+  <%= password_field_tag 'password_confirmation' %>
+  <br /> <br />
+
+  <%= submit_tag "Create profile" %>
+ 
+<% end %>
+</div>
+
+<% if @user.errors.any? %>
+    <div class="alert alert-danger" role="alert"><p>Nous n'avons pas réussi à créer le compte pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%=@pwd_not_match %>

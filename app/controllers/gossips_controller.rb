@@ -1,5 +1,8 @@
 class GossipsController < ApplicationController
 
+  before_action :authenticate_user, only: [:new, :create, :show]
+  before_action :is_author?, only: [:update, :edit, :destroy]
+
   def index
     @all_gossips = Gossip.all
   end
@@ -16,18 +19,19 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(title: params['title'],content: params['content'],user: User.find_by(first_name: "Anonymous"))
-
+    @gossip = Gossip.new(title: params['title'],content: params['content'],user: params['current_user'])
+    @gossip.user = current_user
     if @gossip.save
       @success = "Votre potin a bien été créé"
-      puts @success
+    
       redirect_to root_path(:success => @success)
     else
       @error = @gossip.errors.full_messages
-      puts @error 
+     
       render 'new' 
     end
   end 
+
 
   def edit
     @gossip = Gossip.find(params[:id]) #pour afficher la page edit, j'ai besoin du gossip a modifier @gossip, c'est lié au edit.html.erb
@@ -50,4 +54,20 @@ class GossipsController < ApplicationController
 
     redirect_to @gossip
   end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
+  def is_author?
+    unless current_user == @gossip.user
+      redirect_to @gossip
+    end
+  end
+
 end

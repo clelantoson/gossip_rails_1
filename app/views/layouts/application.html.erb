@@ -30,6 +30,22 @@
           <li class="nav-item">
             <%= link_to "Contact", contact_path, class:"nav-link" %>
           </li>
+
+          <% unless logged_in? %> <li class="nav-item">
+           <%= link_to "Sign Up", new_user_path, class:"nav-link" %>
+            </li>
+          <% end %>
+
+          <% unless logged_in? %> <li class="nav-item">
+            <%= link_to "Sign In", new_session_path, class:"nav-link" %>
+            </li>
+          <% end %>
+
+        <% if logged_in?%> <li class="nav-item">
+          <%= link_to "Se déconnecter", session_path(session.id), method: :delete, class:"nav-link" %>
+          </li>
+        <% end %>
+
         </ul>
       </div>
     </nav>

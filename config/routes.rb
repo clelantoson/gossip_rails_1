@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index]
   resources :cities, only: [:new, :create, :show, :index]
   resources :comments
+  resources :sessions, only: [:new, :create, :destroy]
 end

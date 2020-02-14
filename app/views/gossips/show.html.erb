@@ -5,8 +5,7 @@
       <h5 class="card-title">Title : <%=@gossip.title%></h5>
       <p class="card-text">Content : <%=@gossip.content%> <br>
       by Author : <%=@gossip.user.first_name%><br>
-      from : 
-      <%= link_to "#{@gossip.user.city.name}", city_path %> </p><br>
+      from : <%= link_to "#{@gossip.user.city.name}", city_path %> </p><br>
     on <%=@gossip.created_at%></p>
     <%= link_to "Watch the Author profile", user_path %> </p>
     <%= link_to "Edit the gossip", edit_gossip_path %> </p>
@@ -33,7 +32,8 @@
       <div class="card-header"> <%= comment.user.first_name %> </div>
       <div class="card-body">
         <p class="card-text"> <%= comment.content %><br/>
-      </p>
+      <%= link_to "Edit the comment", edit_comment_path %> 
+    </p>
       </div>
     </div>
     <% end %>
