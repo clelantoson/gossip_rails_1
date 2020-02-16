@@ -2,17 +2,17 @@
   <%= form_tag url_for(action: 'create'), method: "post" do %>  
     <%= label_tag 'Email' %>
   
-    <%= text_field_tag 'email' %>
+    <%= text_field_tag 'email', nil,  autofocus: true %>
   
     <br /> <br />
   
     <%= label_tag 'Password' %>
   
-    <%= text_field_tag 'password' %>
+    <%= password_field_tag 'password' %>
     <br /> <br />
   
     <%= submit_tag "Sign in" %>
-    <%=params %>
+
   <% end %>
 
 

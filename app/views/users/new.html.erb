@@ -6,13 +6,13 @@
   <br /> <br />
 
   <%= label_tag 'Last Name' %>
-  <%= text_area_tag 'last_name' %>
+  <%= text_field_tag 'last_name' %>
 
   <br/> <br/>
 
   <%= label_tag 'Age' %>
 
-  <%= text_field_tag 'age' %>
+  <%= number_field_tag 'age', nil, min: 18, max: 99, value: 18 %>
   <br /> <br />
 
   <%= label_tag 'City' %>
@@ -23,7 +23,7 @@
 
   <%= label_tag 'Description' %>
 
-  <%= text_field_tag 'description' %>
+  <%= text_area_tag 'description' %>
 
   <br /> <br />
 
